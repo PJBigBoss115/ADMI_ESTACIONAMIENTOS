@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" onMouseMoved="#notificaTitle" prefHeight="315.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admi_estacionamientos.FXMLVista_5Controller">
+   <children>
+      <Label layoutX="78.0" layoutY="51.0" text="Administracion de Estacionamiento" />
+      <Label fx:id="mssTitle" layoutX="121.0" layoutY="80.0" prefHeight="17.0" prefWidth="100.0" textAlignment="CENTER" />
+      <Label layoutX="49.0" layoutY="140.0" text="Ingrese la placa: " />
+      <TextField fx:id="textPlaca" layoutX="138.0" layoutY="136.0" />
+      <Label fx:id="mssNotifica_1" layoutX="49.0" layoutY="179.0" prefWidth="244.0" />
+      <Label fx:id="mssNotifica_2" layoutX="50.0" layoutY="196.0" prefWidth="244.0" />
+      <Button fx:id="buttonOk" layoutX="221.0" layoutY="249.0" mnemonicParsing="false" onAction="#enviaPlaca" prefWidth="70.0" text="Ok" />
+   </children>
+</AnchorPane>
