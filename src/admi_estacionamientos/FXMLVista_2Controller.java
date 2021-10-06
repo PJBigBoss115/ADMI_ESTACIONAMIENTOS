@@ -27,6 +27,10 @@ public class FXMLVista_2Controller implements Initializable {
     static public int cupoMoto = 0;
     static public int cupoCami = 0;
     
+    static public int cupoAutoTT = 0;
+    static public int cupoMotoTT = 0;
+    static public int cupoCamiTT = 0;
+    
     @FXML
     private TextField automovilesFX;
     @FXML
@@ -45,8 +49,7 @@ public class FXMLVista_2Controller implements Initializable {
             cupoMoto = Integer.parseInt(this.motosFX.getText());
             cupoCami = Integer.parseInt(this.camionesFX.getText());
             
-                    System.out.println("Click Accept!");
-                    mssCupoV.setText("Se a definido correctamente!");
+            mssCupoV.setText("Se a definido correctamente!");
         }catch(NumberFormatException e) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setHeaderText(null);
@@ -60,7 +63,6 @@ public class FXMLVista_2Controller implements Initializable {
     @FXML
     private void nextScena_2(ActionEvent event) {
         try{
-            System.out.println("Click Next!");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_3.fxml"));
             Parent root = loader.load();
             FXMLVista_3Controller controlador = loader.getController();

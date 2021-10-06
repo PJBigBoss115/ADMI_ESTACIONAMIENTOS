@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -45,77 +46,94 @@ public class FXMLVista_4Controller implements Initializable {
     
     @FXML
     private void mostrarCupo_2() {
-         System.out.println("MovedOn!");
+        FXMLVista_2Controller.cupoAutoTT = FXMLVista_2Controller.cupoAuto-EstacionamientoAdmi.Automoviles.numeradorA;
+        FXMLVista_2Controller.cupoMotoTT = FXMLVista_2Controller.cupoMoto-EstacionamientoAdmi.Motos.numeradorM;
+        FXMLVista_2Controller.cupoCamiTT = FXMLVista_2Controller.cupoCami-EstacionamientoAdmi.Camiones.numeradorC;
+        
         formato.setMinimumIntegerDigits(3);
-        cupoAutoFX.setText(formato.format(FXMLVista_2Controller.cupoAuto));
-        cupoMotoFX.setText(formato.format(FXMLVista_2Controller.cupoMoto));
-        cupoCamiFX.setText(formato.format(FXMLVista_2Controller.cupoCami));
+        cupoAutoFX.setText(formato.format(FXMLVista_2Controller.cupoAutoTT));
+        cupoMotoFX.setText(formato.format(FXMLVista_2Controller.cupoMotoTT));
+        cupoCamiFX.setText(formato.format(FXMLVista_2Controller.cupoCamiTT));
     }
     
     @FXML
     private void addAuto (ActionEvent event) {
-        try{
-            System.out.println("Click addA!");
-            indicador = 1;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_5.fxml"));
-            Parent root = loader.load();
-            FXMLVista_5Controller controlador = loader.getController();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            stage.setOnCloseRequest(e -> controlador.closeWindows());
-            Stage myStage = (Stage) this.buttonAuto.getScene().getWindow();
-            myStage.close();
-        }catch(IOException ex){
-            Logger.getLogger(FXMLVistaController.class.getName()).log(Level.SEVERE, null, ex);
+        if(FXMLVista_2Controller.cupoAuto == EstacionamientoAdmi.Automoviles.numeradorA) {
+            Alert alertaIn = new Alert(Alert.AlertType.ERROR);
+            alertaIn.setContentText("Ya no hay espacios disponibles!");
+            alertaIn.showAndWait();
+        }else{
+            try{
+                indicador = 1;
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_5.fxml"));
+                Parent root = loader.load();
+                FXMLVista_5Controller controlador = loader.getController();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+                stage.setOnCloseRequest(e -> controlador.closeWindows());
+                Stage myStage = (Stage) this.buttonAuto.getScene().getWindow();
+                myStage.close();
+            }catch(IOException ex){
+                Logger.getLogger(FXMLVistaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
     @FXML
     private void addMoto (ActionEvent event) {
-        try{
-            System.out.println("Click addM!");
-            indicador = 2;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_5.fxml"));
-            Parent root = loader.load();
-            FXMLVista_5Controller controlador = loader.getController();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            stage.setOnCloseRequest(e -> controlador.closeWindows());
-            Stage myStage = (Stage) this.buttonMoto.getScene().getWindow();
-            myStage.close();
-        }catch(IOException ex){
-            Logger.getLogger(FXMLVistaController.class.getName()).log(Level.SEVERE, null, ex);
+        if(FXMLVista_2Controller.cupoMoto == EstacionamientoAdmi.Motos.numeradorM) {
+            Alert alertaIn = new Alert(Alert.AlertType.ERROR);
+            alertaIn.setContentText("Ya no hay espacios disponibles!");
+            alertaIn.showAndWait();
+        }else{
+            try{
+                indicador = 2;
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_5.fxml"));
+                Parent root = loader.load();
+                FXMLVista_5Controller controlador = loader.getController();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+                stage.setOnCloseRequest(e -> controlador.closeWindows());
+                Stage myStage = (Stage) this.buttonMoto.getScene().getWindow();
+                myStage.close();
+            }catch(IOException ex){
+                Logger.getLogger(FXMLVistaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
     @FXML
     private void addCami (ActionEvent event) {
-        try{
-            System.out.println("Click addC!");
-            indicador = 3;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_5.fxml"));
-            Parent root = loader.load();
-            FXMLVista_5Controller controlador = loader.getController();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            stage.setOnCloseRequest(e -> controlador.closeWindows());
-            Stage myStage = (Stage) this.buttonCami.getScene().getWindow();
-            myStage.close();
-        }catch(IOException ex){
-            Logger.getLogger(FXMLVistaController.class.getName()).log(Level.SEVERE, null, ex);
+        if(FXMLVista_2Controller.cupoCami == EstacionamientoAdmi.Camiones.numeradorC) {
+            Alert alertaIn = new Alert(Alert.AlertType.ERROR);
+            alertaIn.setContentText("Ya no hay espacios disponibles!");
+            alertaIn.showAndWait();
+        }else{
+            try{
+                indicador = 3;
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_5.fxml"));
+                Parent root = loader.load();
+                FXMLVista_5Controller controlador = loader.getController();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+                stage.setOnCloseRequest(e -> controlador.closeWindows());
+                Stage myStage = (Stage) this.buttonCami.getScene().getWindow();
+                myStage.close();
+            }catch(IOException ex){
+                Logger.getLogger(FXMLVistaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
     @FXML
     private void returnScena (ActionEvent event) {
         try{
-            System.out.println("Click return!");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_3.fxml"));
             Parent root = loader.load();
             FXMLVista_3Controller controlador = loader.getController();

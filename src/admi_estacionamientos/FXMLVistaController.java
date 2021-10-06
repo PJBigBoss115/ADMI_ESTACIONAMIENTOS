@@ -44,7 +44,6 @@ public class FXMLVistaController implements Initializable {
             tarifaY = Double.parseDouble(this.tarifaFX.getText());
             cobroX = Double.parseDouble(this.tiempoFX.getText());
             
-                    System.out.println("Click Accept!");
                     mssConfirmarTarifa.setText("Se a definido: Cobrar Q"+tarifaY+"0 por "+cobroX+"0 seg");
                     mssConfirmarTarifa1.setText("de utilizacion del estacionamiento.");
         }catch(NumberFormatException e) {
@@ -59,7 +58,6 @@ public class FXMLVistaController implements Initializable {
     @FXML
     private void nextScena_1(ActionEvent event){
         try{
-            System.out.println("Click Next!");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_2.fxml"));
             Parent root = loader.load();
             FXMLVista_2Controller controlador = loader.getController();

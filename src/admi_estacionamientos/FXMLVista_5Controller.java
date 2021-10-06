@@ -55,7 +55,6 @@ public class FXMLVista_5Controller implements Initializable {
     
     @FXML
     private void notificaTitle() {
-        System.out.println("MovedOn!");
         n_TF = 0;
         n_TF = FXMLVista_3Controller.nTF;
         if(n_TF == 1){
@@ -102,7 +101,7 @@ public class FXMLVista_5Controller implements Initializable {
             if(enviar.ingresarPlaca(FXMLVista_4Controller.indicador, cadena) == true) {
                 enviar.agregaLista(FXMLVista_4Controller.indicador, cadena);
                 
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/admi_estacionamientosVentanas/FXMLVista_4.fxml"));

@@ -308,7 +308,7 @@ public class ValidacionesEtc {
         if((descuento == 0)&&(recargo == 0)){
             periodosT = tiempoUtilizado / admi_estacionamientos.FXMLVistaController.cobroX;
             totalCancelar = periodosT * admi_estacionamientos.FXMLVistaController.tarifaY;
-            System.out.println("\nTotal a cancelar: Q"+totalCancelar+"0 'No aplican descuentos'");
+            //System.out.println("\nTotal a cancelar: Q"+totalCancelar+"0 'No aplican descuentos'");
         }else{
             if(recargo == 0){
                 periodosT = tiempoUtilizado / admi_estacionamientos.FXMLVistaController.cobroX;
@@ -316,14 +316,14 @@ public class ValidacionesEtc {
                 
                 totalDescuento = totalCancelar * descuento;
                 totalCancelar = totalCancelar - totalDescuento;
-                System.out.println("\nTotal a cancelar: Q"+totalCancelar+"0 'Aplica 10% de descuento'");
+                //System.out.println("\nTotal a cancelar: Q"+totalCancelar+"0 'Aplica 10% de descuento'");
             }else{
                 extra = ((tiempoUtilizado / admi_estacionamientos.FXMLVistaController.cobroX) - 1) * recargo;
                 
                 periodosT = tiempoUtilizado / admi_estacionamientos.FXMLVistaController.cobroX;
                 totalCancelar = (periodosT * admi_estacionamientos.FXMLVistaController.tarifaY) + extra;
                 
-                System.out.println("\nTotal a cancelar: Q"+totalCancelar+"0 'Recargo de Q5.00 por periodo'");
+                //System.out.println("\nTotal a cancelar: Q"+totalCancelar+"0 'Recargo de Q5.00 por periodo'");
                 
                 FXMLVista_3Controller.ingresosT = (int) (FXMLVista_3Controller.ingresosT + totalCancelar);
             }

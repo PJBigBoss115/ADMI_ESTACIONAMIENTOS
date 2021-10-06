@@ -30,10 +30,9 @@ public class Vehiculos {
     
     protected double tarifaTotal;
     
-    protected LocalTime horaActual = LocalTime.now();
-    protected LocalDate fechaActual = LocalDate.now();
-    protected DateTimeFormatter formatoH = DateTimeFormatter.ofPattern("h':'mm");
-    protected DateTimeFormatter formatoF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    LocalDate fechaActual = LocalDate.now();
+    DateTimeFormatter formatoH = DateTimeFormatter.ofPattern("h':'mm");
+    DateTimeFormatter formatoF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
     /**
      * 
@@ -47,6 +46,8 @@ public class Vehiculos {
      */
     
     public Vehiculos(String placa) {
+        LocalTime horaActual = LocalTime.now();
+        
         setId();
         this.id = getId();
         this.placa = placa;

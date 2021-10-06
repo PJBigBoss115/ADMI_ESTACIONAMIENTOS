@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class IngresarDatos {
     //Obtener hora y fecha
-    LocalTime hora = LocalTime.now();
     LocalDate fecha = LocalDate.now();
     DateTimeFormatter fH = DateTimeFormatter.ofPattern("h':'mm");
     DateTimeFormatter fF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -189,7 +188,6 @@ public class IngresarDatos {
                 }
                 break;
         }
-        System.out.println("Si termino el metodo");
          /**
           * if final que manda la validacion
           */
@@ -212,13 +210,12 @@ public class IngresarDatos {
                 aleatorio = nAuto.arregloA[nAuto.contadorA];
                 formato.setMinimumIntegerDigits(3);
                 
+                LocalTime hora = LocalTime.now();
+                
                 metodo.GenerarTicket("Estacionamiento N°: "+formato.format(aleatorio), 
                        "Placa, "+cadena,"Fecha: "+fecha.format(fF),"Hora: "+hora.format(fH), 
                        "Tarifa de Q" + FXMLVistaController.tarifaY + "0 por " + FXMLVistaController.cobroX + 
                        "0 segundos");
-                for(Vehiculos e: listaVehiculos){
-                    System.out.println(e.MostrarDatos());
-                }
                 break;
                 
             case 2:
@@ -228,10 +225,12 @@ public class IngresarDatos {
                 nMoto.NumeroRandom(x);
                 aleatorio = nMoto.arregloM[nMoto.contadorM];
                 formato.setMinimumIntegerDigits(3);
-                 
+                
+                LocalTime hora_2 = LocalTime.now();
+                
                 metodo.GenerarTicket("Estacionamiento N°: "+formato.format(aleatorio), 
                        "Placa, "+cadena+"  'Aplica 10% de descuento'","Fecha: "+fecha.format(fF),
-                       "Hora: "+hora.format(fH), "Tarifa de Q" + FXMLVistaController.tarifaY + "0 por " + FXMLVistaController.cobroX + 
+                       "Hora: "+hora_2.format(fH), "Tarifa de Q" + FXMLVistaController.tarifaY + "0 por " + FXMLVistaController.cobroX + 
                        "0 segundos");
                 break;
                 
@@ -243,9 +242,11 @@ public class IngresarDatos {
                 aleatorio = nCami.arregloC[nCami.contadorC];
                 formato.setMinimumIntegerDigits(3);
                 
+                LocalTime hora_3 = LocalTime.now();
+                
                 metodo.GenerarTicket("Estacionamiento N°: "+formato.format(aleatorio), 
                        "Placa, "+cadena+"  'Q5.00 de recargo por periodo'","Fecha: "+fecha.format(fF),
-                       "Hora: "+hora.format(fH), "Tarifa de Q" + FXMLVistaController.tarifaY + "0 por " + FXMLVistaController.cobroX + 
+                       "Hora: "+hora_3, "Tarifa de Q" + FXMLVistaController.tarifaY + "0 por " + FXMLVistaController.cobroX + 
                        "0 segundos");
                 break;
         }
@@ -268,11 +269,8 @@ public class IngresarDatos {
         for(int z = 0; z < arrayVehiculos.length; z++) {
             if(arrayVehiculos[z].MostrarDatos(cadena) == true){
                 valido_4 = true;
-                System.out.println("Hola dije que es verdad");
         
                 metodo.CalcularTiempo(FXMLVistaController.tiempoX, Vehiculos.inicio, actual.format(formt));
-                
-                System.out.println("Aqui va antes del calcular pago");
         
                 char []contar = cadena.toCharArray();
                 longuitud = cadena.length() - 1;
@@ -281,15 +279,12 @@ public class IngresarDatos {
                 if(caracter == 'P') {
                     metodo.CalcularPago(0, 0);
                     indicar = 1;
-                    System.out.println("Es un carro");
                 }if(caracter == 'M') {
                     metodo.CalcularPago(0.1, 0);
                     indicar = 2;
-                    System.out.println("Es una moto");
                 }if(caracter == 'C') {
                     metodo.CalcularPago(0, 5);
                     indicar = 3;
-                    System.out.println("Es un camion");
                 }
             }
         }
@@ -308,15 +303,30 @@ public class IngresarDatos {
         }else{
             valido_4 = true;
             if(indicar == 1) {
+                if(EstacionamientoAdmi.Automoviles.numeradorA == 1) {
+                    EstacionamientoAdmi.Automoviles.numeradorA = 0;
+                }else{
+                    EstacionamientoAdmi.Automoviles.numeradorA = EstacionamientoAdmi.Automoviles.numeradorA - 1;
+                }
                 metodo.GenerarFactura("Nit: "+cadena, "Por "+metodo.periodosT+"0 periodos de"
                        + " tiempo utilizado", "Tarifa: Q"+FXMLVistaController.tarifaY+"0", "Descuento: N/A"
                        , "Recargo: N/A", "Total: Q"+metodo.totalCancelar+"0 ", agregar);
             }if(indicar == 2) {
+                if(EstacionamientoAdmi.Motos.numeradorM == 1) {
+                    EstacionamientoAdmi.Motos.numeradorM = 0;
+                }else{
+                    EstacionamientoAdmi.Motos.numeradorM = EstacionamientoAdmi.Motos.numeradorM - 1;
+                }
                 metodo.GenerarFactura("Nit: "+cadena, "Por "+metodo.periodosT+"0 periodos de"
                        + " tiempo utilizado", "Tarifa: Q"+FXMLVistaController.tarifaY+"0", "Descuento: 10%, Es de: Q"
                        +metodo.totalDescuento+"0"
                        , "Recargo: N/A", "Total: Q"+metodo.totalCancelar+"0 ", agregar);
             }if(indicar == 3) {
+                if(EstacionamientoAdmi.Camiones.numeradorC == 1) {
+                    EstacionamientoAdmi.Camiones.numeradorC = 0;
+                }else{
+                    EstacionamientoAdmi.Camiones.numeradorC = EstacionamientoAdmi.Camiones.numeradorC - 1;
+                }
                 metodo.GenerarFactura("Nit: "+cadena, "Por "+metodo.periodosT+"0 periodos de"
                        + " tiempo utilizado", "Tarifa: Q"+FXMLVistaController.tarifaY+"0", "Descuento: N/A"
                        , "Recargo: Q5.00 por periodo, Es de: Q"+metodo.extra+"0"
